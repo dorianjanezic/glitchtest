@@ -1,3 +1,5 @@
+import mqtt from 'mqtt'
+
 //global variables
 let number = 100;
 var twostrings = 1;
@@ -14,17 +16,11 @@ function calculateOctave (valueString) {
   return (iterval.toString());
 }
 
-let socket = io();
-
-//Listen for confirmation of connection
-socket.on('connect', function() {
-    console.log("Connected");
-  });
 
 //establishing mqtt connection over websocket port
-const client = mqtt.connect("oasisrazor294.cloud.shiftr.io", {
-      clientId: 'javascript'
-    });
+let client = mqtt.connect('https://public:public@public.cloud.shiftr.io', {
+  clientId: 'javascript'
+});
 
     client.on('connect', function () {
       console.log('connected!');
